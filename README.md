@@ -1,8 +1,8 @@
-# dpdp — DPDP Compliance Agent Skill
+# dpdp-agent-skill — DPDP Compliance Agent Skill
 
-An [agent skill](https://agentskills.io) that helps any AI coding agent make software compliant with **India's Digital Personal Data Protection Act, 2023 (DPDP Act)** and the **DPDP Rules, 2025**.
+An [agent skill](https://agentskills.io) that makes any software **DPDP compliant** with your AI agent: audit codebases against **India's Digital Personal Data Protection Act, 2023 (DPDP Act)** and the **DPDP Rules, 2025**, build consent and data-rights features, answer legal questions with citations, and generate compliance documents.
 
-Works with Claude Code, Cursor, Codex, and 40+ other agents that support the open `SKILL.md` standard.
+Works with Claude Code, Cursor, Codex, Gemini CLI, Windsurf, and 40+ other agents that support the open `SKILL.md` standard.
 
 ## What it does
 
@@ -14,7 +14,7 @@ Works with Claude Code, Cursor, Codex, and 40+ other agents that support the ope
 ## Install
 
 ```bash
-npx skills add kesharipiyush24/dpdp
+npx skills add KeshariPiyush24/dpdp-agent-skill
 ```
 
 Or point your agent at this repo's `SKILL.md` directly.
