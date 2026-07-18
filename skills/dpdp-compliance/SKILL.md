@@ -1,5 +1,5 @@
 ---
-name: dpdp-agent-skill
+name: dpdp-compliance
 description: Makes software compliant with India's Digital Personal Data Protection (DPDP) Act 2023 and DPDP Rules 2025. Use when auditing a codebase for DPDP compliance gaps, implementing compliance features (consent management, data principal rights APIs, breach notification, data retention/erasure, verifiable parental consent), answering questions about the DPDP Act, Rules, penalties, the Data Protection Board, or enforcement timelines, or generating compliance artifacts (privacy notices, consent records, breach notification drafts, DPIA checklists). Triggers include DPDP, Digital Personal Data Protection, India data privacy, data fiduciary, data principal, consent manager, Significant Data Fiduciary, MeitY data protection. Do not use for GDPR-only, CCPA-only, or other non-Indian privacy regimes, and do not use as a substitute for professional legal advice.
 license: MIT
 metadata:

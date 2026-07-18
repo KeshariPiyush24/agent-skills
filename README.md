@@ -6,7 +6,7 @@ A collection of [agent skills](https://agentskills.io) for AI coding agents (Cur
 
 | Skill | What it does | Install |
 | --- | --- | --- |
-| [`dpdp-agent-skill`](./skills/dpdp-agent-skill/) | India's DPDP Act 2023 & Rules 2025 — audit, implement, Q&A, compliance artifacts | `npx skills add KeshariPiyush24/agent-skills -s dpdp-agent-skill` |
+| [`dpdp-compliance`](./skills/dpdp-compliance/) | India's DPDP Act 2023 & Rules 2025 — audit, implement, Q&A, compliance artifacts | `npx skills add KeshariPiyush24/agent-skills -s dpdp-compliance` |
 
 ## Install
 
@@ -15,7 +15,7 @@ A collection of [agent skills](https://agentskills.io) for AI coding agents (Cur
 npx skills add KeshariPiyush24/agent-skills
 
 # One skill only
-npx skills add KeshariPiyush24/agent-skills -s dpdp-agent-skill
+npx skills add KeshariPiyush24/agent-skills -s dpdp-compliance
 
 # Global (available in every project on this machine)
 npx skills add KeshariPiyush24/agent-skills -g -y --copy
