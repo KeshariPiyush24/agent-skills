@@ -22,7 +22,7 @@ Help software teams comply with India's **Digital Personal Data Protection Act, 
   - **+12 months (13 Nov 2026)**: Section 6(9), Section 27(1)(d); Rule 4 and First Schedule (Consent Manager registration).
   - **+18 months (13 May 2027)**: Sections 3-5, 6(1)-(8) and (10), 7-17, Section 27 except 27(1)(d), Sections 28-34 (inquiry, **appeals**, ADR, voluntary undertaking, **penalties**), 36, 37, Section 44(2); Rules 3, 5-16, 22-23 and linked Schedules.
   - Do **not** say appeals or penalties are in force before 13 May 2027.
-- The Data Protection Board of India is established (HQ in the National Capital Region, four members) — G.S.R. 844(E), 845(E).
+- The Data Protection Board of India is established (HQ in the National Capital Region; G.S.R. 845(E) notifies four members — whether that count includes the Chairperson is not stated in the notification) — G.S.R. 844(E), 845(E).
 - For exact dates and the penalty table, read `references/timelines-penalties.md`.
 
 ## Rules of engagement
