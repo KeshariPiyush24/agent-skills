@@ -1,6 +1,6 @@
-# Consent Record Schema (Section 6 of the DPDP Act, Rule 3)
+# Consent Record Schema (Section 6 of the DPDP Act; notice versioning links to Rule 3)
 
-A reference data model for provable, purpose-scoped consent. Section 6(10) places the burden of proof on the Data Fiduciary: you must be able to show that notice was given and consent obtained. Adapt names/types to the target stack.
+A reference data model for provable, purpose-scoped consent. Section 6(10) places the burden of proof on the Data Fiduciary: you must be able to show that notice was given and consent obtained. Rule 3 governs notice content — store `notice_version` so each grant maps to the exact Rule 3 notice shown. Adapt names/types to the target stack.
 
 ## Design rules
 
@@ -18,6 +18,7 @@ A reference data model for provable, purpose-scoped consent. Section 6(10) place
 | id | uuid pk | |
 | data_principal_id | fk -> users | The individual (or child) the data is about |
 | purpose | enum/text | e.g. `service_delivery`, `marketing_email`, `marketing_sms`, `analytics`, `personalization`, `third_party_sharing` |
+| personal_data_items | text[] / jsonb | Data items covered by this grant (supports Section 6(1) necessity / minimisation proof), e.g. `["email","phone"]` |
 | action | enum | `granted`, `withdrawn`, `denied` |
 | notice_version | text | Version of the privacy notice shown (Rule 3) |
 | notice_language | text | Language the notice/request was presented in (Section 6(3)) |

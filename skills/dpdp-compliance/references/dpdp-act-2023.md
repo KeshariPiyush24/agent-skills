@@ -1,6 +1,10 @@
 # The Digital Personal Data Protection Act, 2023 (No. 22 of 2023)
 
+> **Provenance:** Agent-oriented paraphrase of Act No. 22 of 2023. Official text: [India Code — a2023-22.pdf](https://www.indiacode.nic.in/bitstream/123456789/22037/1/a2023-22.pdf). Commencement dates come from G.S.R. 843(E) (13 Nov 2025), not from condensed footnotes on secondary sites. This is **not** a substitute for the Gazette/India Code text. Verify against the official Act for legal decisions.
+
 Received Presidential assent on 11 August 2023. An Act to provide for the processing of digital personal data in a manner that recognises both the right of individuals to protect their personal data and the need to process such personal data for lawful purposes. Brought into force in phases by notifications of 13 November 2025 (see `timelines-penalties.md`).
+
+**Note:** The workspace Gazettes cover Rules 2025 + commencement/Board notifications. The Act itself is not among those PDFs; treat this file as a structured paraphrase pinned to India Code.
 
 ## Chapter I — Preliminary
 

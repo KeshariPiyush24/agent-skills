@@ -7,10 +7,14 @@ How to audit a codebase/product against the DPDP Act, 2023 and DPDP Rules, 2025.
 Before auditing, establish:
 
 1. **Does the Act apply?** (Section 3) — Is digital personal data processed in India, or outside India in connection with offering goods/services to Data Principals in India? Purely personal/domestic processing and data made publicly available by the Data Principal are out of scope.
-2. **Role**: Is the organisation a Data Fiduciary (determines purpose/means) or Data Processor (processes on behalf of another)? Most product companies are Data Fiduciaries. Processors' obligations flow through the fiduciary's contract (Section 8(2)).
-3. **Exemptions** (Section 17): outsourcing processing of non-India Data Principals under contract (17(1)(d)), legal claims, courts, law enforcement, mergers, loan-default assessment, research/archiving/statistics per Second Schedule, and possible startup exemptions (17(3)).
+2. **Role map** (per processing activity, not per company):
+   - **Data Fiduciary** — determines purpose and means (most product companies for their own users).
+   - **Data Processor** — processes only on behalf of a fiduciary under a valid contract (Section 8(2)).
+   - **Joint / multi-party**: marketplaces, analytics SDKs, ad-tech, and AI APIs may be processors for some flows and independent fiduciaries for others — classify per purpose; do not assume one role for the whole stack.
+3. **Exemptions** (Section 17): outsourcing processing of non-India Data Principals under contract (17(1)(d)), legal claims, courts, law enforcement, mergers, loan-default assessment, research/archiving/statistics per Second Schedule, and possible startup exemptions (17(3)). **Do not assume a startup is exempt** until a Central Government notification under Section 17(3) actually covers it.
 4. **SDF status**: Has the entity been (or is it likely to be) notified as a Significant Data Fiduciary? If yes, include Section G.
-5. **Third Schedule class**: Is it an e-commerce entity (>= 2 crore users), online gaming intermediary (>= 50 lakh users), or social media intermediary (>= 2 crore users)? If yes, the 3-year erasure clock of Rule 8 applies.
+5. **Third Schedule class**: Is it an e-commerce entity (>= 2 crore registered users in India), online gaming intermediary (>= 50 lakh), or social media intermediary (>= 2 crore)? Use the Third Schedule **“user”** definition (not just logged-in accounts). If yes, Rule 8(1) 3-year erasure clock applies.
+6. **Product type flags**: (a) building a **Consent Manager** → include Section J; (b) processes **employee/applicant** data → include Section K; (c) web/app with non-essential cookies/SDKs → include Section L.
 
 ## Step 1 — Map personal-data touchpoints
 
@@ -21,9 +25,10 @@ Search the codebase for:
 - **Third parties**: analytics (GA, Mixpanel, Amplitude), ads, crash reporting, payment gateways, email/SMS providers, CRMs, cloud AI APIs, tag managers
 - **Logging**: log statements, request logging middleware, error trackers — look for PII in logs
 - **Flows out**: webhooks, exports, partner APIs, data warehouse ETL, backups, cross-border transfers (region config of cloud resources)
-- **Identifiers**: cookies, device fingerprinting, advertising IDs, tracking pixels
+- **Identifiers**: cookies, localStorage/sessionStorage PII, device fingerprinting, advertising IDs, tracking pixels, SDK init configs
+- **HR/employee systems** (if present): ATS, HRIS, payroll vendors, badge/access logs, monitoring/productivity tools
 
-Useful greps: `email|phone|mobile|address|aadhaar|pan_number|date_of_birth|dob|gender|latitude|ip_address`, analytics SDK imports, `console.log|logger.` near user objects, DB migration files.
+Useful greps: `email|phone|mobile|address|aadhaar|pan_number|date_of_birth|dob|gender|latitude|ip_address`, analytics SDK imports (`gtag|mixpanel|amplitude|segment|hotjar|clarity`), cookie consent libs, `console.log|logger.` near user objects, DB migration files, HRIS/payroll vendor names.
 
 ## Section A — Grounds, notice and consent (Sections 4-6, Rule 3) — penalty tier: Rs 50 crore (other provisions)
 
@@ -31,14 +36,14 @@ Useful greps: `email|phone|mobile|address|aadhaar|pan_number|date_of_birth|dob|g
 | --- | --- | --- |
 | A1 | Every processing purpose rests on consent or a Section 7 legitimate use | Inventory purposes (service delivery, marketing, analytics, ads); flag any without a ground. Marketing and third-party analytics almost always need consent |
 | A2 | Notice precedes/accompanies every consent request (Section 5(1), Rule 3) | Signup/onboarding UI shows an itemised description of personal data + purposes + links for withdrawal, rights and Board complaint, standalone and in plain language |
-| A3 | Notice for pre-Act consents (Section 5(2)) | Migration/backfill plan to notify existing users |
+| A3 | Notice for pre-commencement processing (Section 5(2)) | Concrete migration: email/in-app notice to existing users covering itemised data + purposes + withdrawal/rights/Board links; continue-until-withdraw behaviour documented; notice versioning for the migration wave |
 | A4 | Notice/consent available in English + Eighth Schedule languages (Sections 5(3), 6(3)) | i18n/localisation support for the notice and consent screens (22 scheduled languages) |
 | A5 | Consent is free, specific, informed, unconditional, unambiguous, affirmative (Section 6(1)) | No pre-ticked boxes, no bundled consent, no consent walls for unnecessary data; purpose-scoped consent flags rather than a single boolean |
-| A6 | Data minimisation — consent limited to necessary data (Section 6(1)) | Permissions requested by mobile apps (contacts, location) vs actual need; optional vs required form fields |
+| A6 | Data minimisation — consent limited to necessary data (Section 6(1)) | Permissions requested by mobile apps (contacts, location) vs actual need; optional vs required form fields; consent record lists data items per purpose |
 | A7 | Withdrawal as easy as giving (Section 6(4), Rule 3(c)) | A working "withdraw consent" UI reachable in as few steps as the grant; not buried in support email |
 | A8 | On withdrawal, processing ceases incl. processors (Section 6(6)) | Withdrawal handler propagates to downstream processors/vendors (event, API call, suppression list) |
-| A9 | Consent records provable (Section 6(10) — burden of proof on fiduciary) | Persistent consent log: who, when, what purposes, notice version, mechanism, IP/user-agent; immutable/auditable |
-| A10 | Consent Manager interoperability (Section 6(7), Rule 4) | If applicable: ability to accept consent given/withdrawn via registered Consent Managers (post-Nov 2026) |
+| A9 | Consent records provable (Section 6(10) — burden of proof on fiduciary) | Persistent consent log: who, when, what purposes, data items, notice version, mechanism, IP/user-agent; immutable/auditable |
+| A10 | Consent Manager interoperability as a Data Fiduciary (Section 6(7)-(9), Rule 4) | If accepting CM-routed consent: honour give/manage/withdraw from registered Consent Managers (post-Nov 2026). If **building** a CM product, use Section J instead |
 
 ## Section B — Security safeguards (Section 8(5), Rule 6) — penalty tier: Rs 250 crore (highest)
 
@@ -48,7 +53,7 @@ Useful greps: `email|phone|mobile|address|aadhaar|pan_number|date_of_birth|dob|g
 | B2 | Access control on computer resources (Rule 6(1)(b)) | AuthN/AuthZ on all endpoints handling PII; RBAC/least privilege for internal tools and DB access; secrets not hardcoded |
 | B3 | Access logging, monitoring, review (Rule 6(1)(c)) | Audit logs on PII access; alerting for anomalous access; log review process |
 | B4 | Continuity: backups and recovery (Rule 6(1)(d)) | Backup jobs, tested restores, ransomware resilience |
-| B5 | Log + data retention of one year for security purposes (Rule 6(1)(e), Rule 8(3)) | Log retention config >= 1 year; not deleting security logs earlier |
+| B5 | Security-continuity log/data retention >= 1 year (Rule 6(1)(e)) | Log retention config >= 1 year for detecting unauthorised access; distinct from Rule 8(3) Seventh Schedule store |
 | B6 | Processor contracts mandate safeguards (Rule 6(1)(f), Section 8(2)) | DPAs/contracts with vendors handling PII (needs-human-review if contracts not in repo) |
 | B7 | Organisational measures (Rule 6(1)(g), Section 8(4)) | Security policy, dependency scanning, secret scanning, code review gates |
 
@@ -69,12 +74,15 @@ Also flag classic issues since they evidence inadequate safeguards: PII in logs,
 | --- | --- | --- |
 | D1 | Erasure on consent withdrawal or purpose exhaustion (Section 8(7)(a)) | Deletion pipeline triggered by withdrawal/account deletion; covers DB, caches, search indexes, object storage, analytics, backup expiry policy |
 | D2 | Processor erasure (Section 8(7)(b)) | Deletion propagates to vendors (API calls, deletion requests) |
-| D3 | Retention exceptions documented | Legal holds (tax, KYC/PMLA, employment law) explicitly mapped, not a blanket "keep everything" |
-| D4 | Third Schedule 3-year clock (Rule 8(1)) — large e-commerce/gaming/social only | Inactivity tracking (last-approach timestamp); scheduled erasure job after 3 years |
+| D3 | Retention exceptions documented | Legal holds (tax, KYC/PMLA, employment law) explicitly mapped per data category — not a blanket "keep everything". See implementation-guide decision table |
+| D4 | Third Schedule 3-year clock (Rule 8(1)) — large e-commerce/gaming/social only | Inactivity tracking (last-approach timestamp); scheduled erasure job after 3 years; thresholds use Schedule “user” definition |
 | D5 | 48-hour pre-erasure notice (Rule 8(2)) | Notification job that warns users at least 48h before scheduled erasure |
-| D6 | 1-year minimum retention of data + logs for Seventh Schedule purposes (Rule 8(3)) | Deletion jobs must NOT purge processing logs/personal data before 1 year from processing (tension with D1 — security/legal logs are retained even when profile data is erased) |
+| D6 | 1-year minimum retention of data + logs for Seventh Schedule purposes (Rule 8(3)) | Segregated compliance store; deletion jobs must NOT purge these logs before 1 year from processing even when profile data is erased |
+| D7 | Erasure vs legal-hold vs Rule 8(3) resolved in code | Pipeline branches: erase profile/purpose data; retain legal-hold subset with documented basis; retain 1-year Seventh Schedule logs with restricted access |
 
-## Section E — Data Principal rights (Sections 11-14, Rules 9, 13, 14) — penalty tier: Rs 50 crore
+## Section E — Data Principal rights (Sections 11-14, Rules 9, 14) — penalty tier: Rs 50 crore
+
+Sections 11-12 rights apply where the Data Principal previously gave consent (including consent as referred to in Section 7(a)). Do not assume a universal DSAR API is required for every Section 7 legitimate-use basis (e.g. pure employment processing under Section 7(i)) without checking that gate.
 
 | # | Check | What to look for |
 | --- | --- | --- |
@@ -126,6 +134,53 @@ Only if notified as SDF (or planning for it):
 | I1 | Accuracy/completeness/consistency where data drives decisions or is disclosed onward (Section 8(3)) | Validation on ingestion; update propagation to downstream consumers |
 | I2 | Processor contracts exist for all vendors (Section 8(2)) | Vendor list vs contract register (needs-human-review) |
 | I3 | Fiduciary accountability regardless of processor fault (Section 8(1)) | Vendor due-diligence/monitoring process |
+| I4 | Role classification documented per integration | Marketplace sellers, analytics SDKs, ad partners, AI APIs tagged processor vs independent fiduciary; contracts match the tag |
+
+## Section J — Building a Consent Manager (Section 6(9), Rule 4, First Schedule) — from 13 Nov 2026
+
+Only if the product **is** (or aims to be) a registered Consent Manager. Fiduciaries that merely *consume* CM consent use A10, not this section.
+
+| # | Check | What to look for |
+| --- | --- | --- |
+| J1 | India company + net worth >= Rs 2 crore (First Schedule Part A) | Incorporation docs / financial eligibility (needs-human-review) |
+| J2 | Interoperable platform certified to Board standards (Part A item 9) | Platform architecture for give/manage/review/withdraw; certification path |
+| J3 | Personal data contents **not readable** by the CM (Part B item 2) | Encryption/blind routing so CM cannot read shared personal data payloads |
+| J4 | Consent/notice/sharing records retained >= 7 years; machine-readable export (Part B items 3-4) | Append-only record store + DSAR-style export for principals |
+| J5 | No subcontract/assignment of CM obligations (Part B item 6) | Architecture and vendor contracts forbid outsourcing core CM duties |
+| J6 | Fiduciary capacity + conflict-of-interest controls (Part B items 8-10) | Policies; MoA/AoA clauses; KMP/director interest checks |
+| J7 | Transparency disclosures published (Part B item 11) | Website/app lists promoters, directors, KMP, >2% shareholders, related body-corporate holdings |
+| J8 | Periodic audit/reporting to the Board (Part B item 12) | Audit mechanisms and reporting pipeline |
+| J9 | Control transfers need prior Board approval (Part B item 13) | Corporate/M&A process flag (needs-human-review) |
+| J10 | Security safeguards to prevent personal data breach (Part B item 7; Rule 6 analogue) | Same bar as Section B for any personal data the CM does process (account data, metadata) |
+
+## Section K — Employment and HR processing (Section 7(i))
+
+For employers / HR products processing employees, contractors, or applicants for purposes of employment or those relating to safeguarding the employer from loss or liability (e.g. prevention of corporate espionage, maintenance of confidentiality of trade secrets, intellectual property):
+
+| # | Check | What to look for |
+| --- | --- | --- |
+| K1 | Section 7(i) scope not stretched to marketing/product analytics on employees | Purpose inventory separates employment ops from consent-based uses |
+| K2 | Employee/applicant notice (even where consent is not the ground) | Onboarding/privacy notice covering categories, purposes, rights that still apply, grievance contact |
+| K3 | Monitoring / productivity / access-badge / email tools minimised | Only what employment/safeguarding purpose needs; vendors under contract (Section 8(2)) |
+| K4 | HR vendor map + deletion/retention | ATS, payroll, benefits, background-check vendors in sharing registry; retention mapped to labour/tax law holds |
+| K5 | Rights gating correct | Do not auto-apply Sections 11-12 DSAR patterns built for consent/§7(a) customers to pure §7(i) employment files without legal review — grievance (Section 13) and security/erasure duties still apply where relevant |
+
+## Section L — Cookies, SDKs and device identifiers (Sections 4-6, Rule 3)
+
+| # | Check | What to look for |
+| --- | --- | --- |
+| L1 | Non-essential cookies/SDKs gated on consent | Analytics, ads, personalisation, session replay blocked until purpose-scoped consent |
+| L2 | Essential vs non-essential split documented | Auth/session/security cookies justified; not used as a blanket exemption for marketing pixels |
+| L3 | Device IDs / advertising IDs treated as personal data when they identify | Collection disclosed in notice; withdrawal disables collection and suppresses vendors |
+| L4 | Tag manager / multiple pixels inventoried | GTM (or equivalent) contents match sharing registry; no undeclared third parties |
+
+## Section M — Government information calls (Rule 23, Seventh Schedule) — readiness
+
+| # | Check | What to look for |
+| --- | --- | --- |
+| M1 | Legal/security contact path for MeitY/authorised-person orders | Runbook for furnishing information within the ordered period |
+| M2 | Non-disclosure capability (Rule 23(2)) | Ability to suppress notice to the Data Principal when an order cites sovereignty/security and forbids disclosure |
+| M3 | SDF-assessment data availability (Seventh Schedule item 3) | Can produce volume/sensitivity/risk metrics if asked for SDF evaluation |
 
 ## Report format
 

@@ -220,7 +220,7 @@ Appropriate technical and organisational measures to ensure, in accordance with 
 | 2 | Online gaming intermediary with at least 50 lakh (5 million) registered users in India | Same exceptions as above | Same three-year period |
 | 3 | Social media intermediary with at least 2 crore (20 million) registered users in India | Same exceptions as above | Same three-year period |
 
-Note: "e-commerce entity" per the Consumer Protection Act, 2019 (excluding sellers on a marketplace); "online gaming intermediary" enables access to online games; "social media intermediary" per the IT (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021.
+Note: "e-commerce entity" per the Consumer Protection Act, 2019 (excluding sellers on a marketplace); "online gaming intermediary" enables access to online games; "social media intermediary" per the IT (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021. **"user"** (for the registered-user thresholds): for an e-commerce entity — any person who accesses or avails any computer resource of that entity; for an online gaming or social media intermediary — any person who accesses or avails the intermediary's computer resource for hosting, publishing, sharing, transacting, viewing, displaying, downloading or uploading information.
 
 ## Fourth Schedule (see Rule 12) — Exemptions from Section 9(1) and 9(3) for children's data
 

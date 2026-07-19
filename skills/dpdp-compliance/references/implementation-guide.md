@@ -33,6 +33,8 @@ GET  /me/consents          -> current state + history
 
 ## 2. Data Principal rights APIs (Sections 11-14, Rule 14)
 
+**Scope gate first:** Sections 11 and 12 apply where the Data Principal previously gave **consent** (including consent as referred to in Section 7(a)). For pure Section 7 legitimate uses (e.g. employment under Section 7(i), many State uses), do not blindly expose the same DSAR erasure/correction APIs without counsel — still implement grievance redressal (Section 13), security (Section 8(5)), and erasure where Section 8(7) applies.
+
 Publish on the website/app how to exercise rights and which identifier is required (Rule 14(1)). Verify identity before serving any request (the request must come from the authenticated Data Principal or verified nominee).
 
 ### Access (Section 11)
@@ -77,10 +79,20 @@ Build the capability before you need it:
 ## 4. Retention and scheduled erasure (Rule 8)
 
 - Track `last_approach_at` per user: update on login and any user-initiated contact for the specified purpose (Section 8(11): only user-initiated contact counts).
-- If in a Third Schedule class (e-commerce >= 2 crore users, gaming >= 50 lakh, social media >= 2 crore): scheduled job erases data 3 years after `max(last_approach_at, rights_exercise_at, rules_commencement)`.
+- If in a Third Schedule class (e-commerce >= 2 crore registered users in India, gaming >= 50 lakh, social media >= 2 crore — use Schedule “user” definition): scheduled job erases data 3 years after `max(last_approach_at, rights_exercise_at, rules_commencement)`.
 - **48-hour warning** (Rule 8(2)): a job that, at T-48h (or earlier), notifies the user that data will be erased unless she logs in or makes contact. Logging in resets the clock.
 - Even outside the Third Schedule, Section 8(7)(a) requires erasure once the specified purpose is no longer served — adopt a documented retention schedule per data category.
-- Retention floor: keep processing logs + personal data 1 year (Rule 8(3), Rule 6(1)(e)) in the segregated compliance store.
+
+### Erasure vs legal-hold vs 1-year floor (decision table)
+
+| Data slice | On consent withdrawal / purpose end / user erase request | Basis |
+| --- | --- | --- |
+| Profile / purpose data with no legal hold | **Erase** across DB, caches, indexes, object storage, processors | Section 8(7), 12(3) |
+| Slice required by another law (tax, KYC/PMLA, labour, litigation hold) | **Retain** only that slice + documented `retention_exception` code; erase the rest | Section 8(7) proviso / law for the time being in force |
+| Processing logs + associated personal data for Seventh Schedule purposes | **Retain >= 1 year** from processing in a segregated, access-restricted compliance store, then erase unless law/notification requires longer | Rule 8(3) |
+| Logs needed to detect unauthorised access (security continuity) | **Retain >= 1 year** (unless longer required by law) | Rule 6(1)(e) |
+
+Never block whole-account erasure because logs must be kept — segregate the compliance/security stores.
 
 ## 5. Verifiable parental consent (Section 9, Rule 10)
 
@@ -124,14 +136,68 @@ On the website/app, prominently:
 - Sectoral localisation (RBI payment data etc.) still applies (Section 16(2)).
 - SDFs: be architecturally ready to pin Government-specified data categories + traffic data to India regions (Rule 13(4)).
 
+## 9. Section 5(2) migration for existing users
+
+For personal data collected before the relevant provisions commence:
+
+1. Ship a **migration notice** (email + in-app) covering Rule 3 content: itemised data, purposes, withdrawal/rights/Board links.
+2. Record `notice_version=migration-<date>`, channel, and timestamp per principal.
+3. Continue processing on the existing basis until withdrawal; on withdrawal, run the same cease-processing + erasure pipeline as for new consents.
+4. Do not silently “re-consent” with a pre-ticked banner — if you need fresh consent for a new purpose, ask affirmatively and purpose-scoped.
+
+## 10. Cookies, SDKs and device identifiers
+
+1. Inventory every cookie, pixel, and SDK (tag-manager contents included).
+2. Classify **essential** (auth, security, load-balancing) vs **consent-gated** (analytics, ads, personalisation, replay).
+3. Block consent-gated tags until the matching purpose is granted; on withdrawal, disable tags and call vendor suppression/deletion APIs.
+4. Disclose device/advertising IDs in the Rule 3 notice when used; treat them as personal data when they identify a principal.
+5. Keep the inventory in the `sharing_registry` so Section 11(1)(b) responses stay accurate.
+
+## 11. Employment / HR processing (Section 7(i))
+
+1. Map HR purposes that fit Section 7(i) (employment; safeguarding employer from loss/liability such as espionage, trade secrets, IP) separately from consent-based product/marketing uses on staff.
+2. Provide an employee/applicant privacy notice (categories, purposes, retention, grievance contact) even when consent is not the ground.
+3. Minimise monitoring tools; bind ATS/payroll/benefits/background-check vendors with Section 8(2) contracts; register them for sharing disclosures.
+4. Retention: align with labour/tax statutes via the legal-hold map; still honour Rule 6 security and Rule 8(3) log floors where applicable.
+5. Rights: implement grievance (Section 13); gate customer-style Section 11/12 automation behind the consent/§7(a) check — escalate pure employment DSARs for human/legal review.
+
+## 12. Building a Consent Manager (Rule 4, First Schedule) — from 13 Nov 2026
+
+Only for products seeking Board registration as a Consent Manager:
+
+1. **Eligibility**: India-incorporated company; net worth >= Rs 2 crore; technical/financial capacity; independent certification of interoperable give/manage/review/withdraw platform against Board standards (Part A).
+2. **Privacy by routing**: design so personal data payloads shared between fiduciaries are **not readable** by the CM (Part B item 2) — encrypt for recipients, minimise CM-side PII to account/metadata needed to operate the service.
+3. **Records**: store consents given/denied/withdrawn, preceding notices, and sharing events; expose to the principal (incl. machine-readable); retain **>= 7 years** (Part B items 3-4).
+4. **No subcontract** of CM obligations; act in a fiduciary capacity toward the principal; enforce conflict-of-interest rules for promoters/directors/KMP (Part B items 6, 8-10).
+5. **Publish** promoters, directors, KMP, senior management, every >2% shareholder, and related >2% body-corporate holdings (Part B item 11).
+6. **Audit + Board reporting** (Part B item 12); **no control transfer** without prior Board approval (Part B item 13).
+7. Register with the Board under Rule 4 before operating; fiduciaries onboarded to your platform must still meet their own Sections 5-6 duties.
+
+## 13. Processor vs fiduciary in integrations
+
+| Pattern | Typical role | Engineering consequence |
+| --- | --- | --- |
+| Cloud DB / email ESP / SMS gateway used only on your instructions | Data Processor | Section 8(2) contract + Rule 6(1)(f); you remain accountable (Section 8(1)) |
+| Analytics/ad SDK that sets its own purposes / cross-site profiles | Often independent Data Fiduciary (or joint) | Purpose + notice/consent may be required for *their* processing; list in sharing registry as fiduciary where appropriate |
+| Marketplace seller on your platform | Often separate Data Fiduciary for buyer data they determine | Clear role matrix; do not claim processor status if seller determines purposes |
+| “AI API” fine-tuning on customer content for the vendor’s models | Likely fiduciary activity by vendor unless contract forbids and technically prevents | Contract + technical controls; disclose sharing |
+
+Record the chosen role per integration in `sharing_registry.recipient_role`.
+
+## 14. Rule 23 / Seventh Schedule readiness
+
+Maintain a legal-ops runbook: who receives Central Government / authorised-person information orders; how to gather and furnish data in time; how to honour **non-disclosure** orders under Rule 23(2) (suppress principal notification); how to produce SDF-assessment metrics (Seventh Schedule item 3) if requested.
+
 ## Rollout priority (greenfield compliance project)
 
 1. Security safeguards baseline (highest penalty, immediate risk) — Section 6 above.
-2. Consent data model + capture/withdrawal flows.
+2. Consent data model + capture/withdrawal flows + cookie/SDK gating.
 3. Breach runbook + affected-user scoping.
-4. Erasure pipeline + retention schedule.
-5. Rights APIs (access/correction), grievance channel, publications.
-6. Children's data flows if applicable.
-7. SDF program if notified.
+4. Erasure pipeline + retention/legal-hold decision table.
+5. Rights APIs (access/correction) with consent/§7(a) scope gate, grievance channel, publications.
+6. Section 5(2) migration notice for existing users.
+7. Children's data flows if applicable; HR/§7(i) controls if applicable.
+8. Consent Manager registration program if building a CM (by 13 Nov 2026).
+9. SDF program if notified.
 
-Target full compliance before **13 May 2027** (core obligations in force).
+Target full fiduciary compliance before **13 May 2027** (core obligations in force). Consent Manager registration path from **13 Nov 2026**.
