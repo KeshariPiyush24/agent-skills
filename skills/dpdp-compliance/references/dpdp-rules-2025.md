@@ -121,17 +121,17 @@ Illustration cases: whether the parent is already a registered user (check held 
 
 ## Rule 13 — Additional obligations of Significant Data Fiduciary
 
-1. An SDF shall, once in every twelve-month period from notification, undertake a **Data Protection Impact Assessment and an audit** to ensure effective observance of the Act and rules.
+1. An SDF shall, once in every twelve-month period from the date it is notified as an SDF or is included in a class of Data Fiduciaries notified as such, undertake a **Data Protection Impact Assessment and an audit** to ensure effective observance of the Act and rules.
 2. The SDF shall cause the person carrying out the DPIA and audit to furnish to the Board a **report containing significant observations**.
 3. The SDF shall observe due diligence to verify that technical measures, including **algorithmic software**, adopted for hosting, display, uploading, modification, publishing, transmission, storage, updating or sharing of personal data are **not likely to pose a risk to the rights of Data Principals**.
 4. The SDF shall ensure that personal data **specified by the Central Government** (on a committee's recommendation) is processed subject to the restriction that the personal data and traffic data pertaining to its flow **is not transferred outside the territory of India**.
-5. "Committee" means a committee constituted by the Central Government for this rule, including officials from the Ministry of Electronics and Information Technology and possibly officials from other Ministries or Departments of the Central Government.
+5. "Committee" means a committee constituted by the Central Government for this rule, including officials from the Ministry of Electronics and Information Technology *(sic — the Gazette prints "Ministry of Electronics and Technology"; not corrected by the corrigenda)* and possibly officials from other Ministries or Departments of the Central Government.
 
 ## Rule 14 — Rights of Data Principals
 
 1. To enable exercise of rights, the Data Fiduciary and, where applicable, the Consent Manager shall prominently publish on website/app: (a) details of the means for making a rights request; and (b) the particulars (e.g. username or other identifier) needed to identify the Data Principal under its terms of service.
 2. The Data Principal may make a request to the Data Fiduciary to whom she previously gave consent, using the required means and particulars.
-3. Every Data Fiduciary and Consent Manager shall prominently publish, under its **grievance redressal system**, a response period **not exceeding ninety days** for responding to grievances, and shall implement appropriate technical and organisational measures to ensure effectiveness.
+3. Every Data Fiduciary and Consent Manager shall prominently publish, under its **grievance redressal system**, a response period **not exceeding ninety days** for responding to grievances, and shall implement appropriate technical and organisational measures to ensure effectiveness. *(Note: the Gazette text of Rule 14(3) is grammatically defective — "publish" lacks an object — and was not corrected by G.S.R. 892(E); this paraphrase reflects the evident intent that the published grievance-response period must not exceed ninety days.)*
 4. The Data Principal may, per the Data Fiduciary's terms of service and applicable law, **nominate one or more individuals** to exercise her rights.
 5. "Identifier" = any sequence of characters issued by the Data Fiduciary to identify the Data Principal (customer identification file number, customer acquisition form number, application reference number, enrolment ID, email address, mobile number, licence number, etc.).
 
@@ -147,7 +147,7 @@ The Act does not apply to processing of personal data necessary for research, ar
 
 - **Rule 17**: Search-cum-Selection Committees for appointing the Chairperson (chaired by Cabinet Secretary) and other Members (chaired by MeitY Secretary); Central Government appoints after considering recommendations; proceedings not invalid for vacancy/defect.
 - **Rule 18**: Salary, allowances and terms of service of Chairperson and Members are as in the Fifth Schedule.
-- **Rule 19**: Board meeting procedure — Chairperson fixes date/time/place and agenda; quorum is one-third of membership; majority vote with casting vote for the chair; conflicted Members must not participate or vote; emergency action by Chairperson to be ratified at the next meeting; decision by circulation permitted; orders/directions/instruments authenticated under signature. **Rule 19(9): the Board's inquiry shall be completed within six months** of receipt of the intimation, complaint, reference or direction under Section 27, extendable by recorded reasons for up to three months at a time.
+- **Rule 19**: Board meeting procedure — Chairperson fixes date/time/place and agenda; quorum is one-third of membership; majority vote with casting vote for the chair; conflicted Members must not participate or vote; emergency action by the Chairperson (with reasons recorded in writing), to be communicated to all Members within seven days and ratified at the next meeting; decision by circulation permitted; orders/directions/instruments authenticated under signature. **Rule 19(9): the Board's inquiry shall be completed within six months** of receipt of the intimation, complaint, reference or direction under Section 27, extendable by recorded reasons for up to three months at a time.
 - **Rule 20**: The Board functions as a **digital office**; it may adopt techno-legal measures to conduct proceedings without physical presence, without prejudice to its power to summon and examine on oath.
 - **Rule 21**: The Board may appoint officers and employees with Central Government approval; terms per the Sixth Schedule.
 
@@ -155,7 +155,7 @@ The Act does not apply to processing of personal data necessary for research, ar
 
 1. Any person aggrieved by an order or direction of the Board may appeal to the Appellate Tribunal (TDSAT); the appeal shall be filed in digital form as the Tribunal decides.
 2. Fee is the same as for appeals under the TRAI Act, 1997, unless reduced or waived by the Tribunal's Chairperson; payable digitally via UPI or another RBI-authorised payment system.
-3. The Tribunal is not bound by the Code of Civil Procedure, 1908 but is guided by natural justice, may regulate its own procedure, and functions as a digital office.
+3. The Tribunal is not bound by the Code of Civil Procedure, 1908 but is guided by natural justice and may regulate its own procedure; it functions as a **digital office** and may adopt **techno-legal measures** to conduct proceedings without requiring the physical presence of any individual (Rule 22(3)(b) — one of the two anchors, with Rule 20, for the Rule 2(1)(b) definition).
 
 ## Rule 23 — Calling for information from Data Fiduciary or intermediary
 

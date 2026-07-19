@@ -7,7 +7,7 @@ A reference data model for provable, purpose-scoped consent. Section 6(10) place
 1. **Append-only event log** — never mutate or delete consent events; derive current state.
 2. **Purpose-scoped** — one grant/withdrawal per purpose, not a global boolean.
 3. **Notice-versioned** — every grant references the exact notice version and language shown.
-4. Retain consent records at least as long as you process the data plus your limitation period; Consent Managers must keep records 7 years (First Schedule Part B) — a good default benchmark.
+4. Retain consent records at least as long as you process the data plus the applicable statutory limitation period for claims against you (confirm the period with counsel); Consent Managers must keep records at least 7 years (First Schedule Part B item 4) — a good default benchmark for everyone.
 
 ## Tables
 
@@ -24,7 +24,7 @@ A reference data model for provable, purpose-scoped consent. Section 6(10) place
 | notice_language | text | Language the notice/request was presented in (Section 6(3)) |
 | mechanism | text | `signup_form`, `settings_toggle`, `consent_manager`, `parental_flow` |
 | consent_manager_id | text nullable | If given via a registered Consent Manager (Section 6(7)) |
-| given_by | enum | `self`, `parent`, `lawful_guardian`, `nominee` |
+| given_by | enum | `self`, `parent`, `lawful_guardian` — Section 14 nominees exercise rights on death/incapacity; they do not grant fresh consent (log nominee actions in a rights-request log, not here) |
 | guardian_verification_id | fk nullable | Link to parental/guardian verification evidence (Rule 10/11) |
 | ip_address | inet | Capture context for proof |
 | user_agent | text | |

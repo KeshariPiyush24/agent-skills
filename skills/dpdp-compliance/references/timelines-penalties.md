@@ -15,14 +15,14 @@ The DPDP Act, 2023 was enacted on 11 August 2023 but commenced in phases via G.S
 Practical implications for compliance planning:
 
 - **Now (in force)**: the Board is constituted and appointment/meeting Rules operate; definitions apply; rule-making is active. Full inquiry, appeal, and penalty powers largely commence only from 13 May 2027.
-- **From 13 Nov 2026**: entities wanting to operate as Consent Managers can and must register with the Board (company incorporated in India, net worth >= Rs 2 crore, interoperable certified platform — First Schedule of the Rules).
+- **From 13 Nov 2026**: entities wanting to operate as Consent Managers can and must register with the Board (company incorporated in India, net worth >= Rs 2 crore, interoperable certified platform — First Schedule of the Rules). Section 27(1)(d) (Board action on Consent Manager registration breaches) also commences on this date, but the monetary penalty machinery (Section 33 and the Schedule) commences only on 13 May 2027 — do not state that monetary penalties are imposable before then.
 - **From 13 May 2027**: notice, consent, security safeguards, breach notification, erasure/retention, children's data, verifiable parental consent, SDF obligations, Data Principal rights, Board inquiry powers (beyond Consent Manager registration), appeals, and the penalty regime all become enforceable. **Software shipping in India should be compliant before this date.**
 
 ## The Data Protection Board of India
 
 - **Established 13 November 2025** by G.S.R. 844(E) under Section 18.
 - Head office in the **National Capital Region of India**.
-- Consists of **four Members** (G.S.R. 845(E) under Section 19(1)), including the Chairperson.
+- G.S.R. 845(E) (under Section 19(1)) notifies that the Board "shall consist of four members"; the notification does not state whether that count includes the Chairperson — do not assert either reading as fact.
 - Functions as a **digital office** — complaints, hearings and decisions are digital by design (Section 28, Rule 20).
 - Members hold office for **two years**, eligible for re-appointment (Section 20).
 - The Board's inquiry must complete within **six months**, extendable by up to three months at a time with recorded reasons (Rule 19(9)).
@@ -32,7 +32,7 @@ Practical implications for compliance planning:
 
 | # | Breach | Provision | Maximum penalty |
 | --- | --- | --- | --- |
-| 1 | Failure to take reasonable security safeguards to prevent personal data breach | Section 8(5) | **Rs 250 crore** (~USD 30M) |
+| 1 | Failure to take reasonable security safeguards to prevent personal data breach | Section 8(5) | **Rs 250 crore** |
 | 2 | Failure to give the Board or affected Data Principals notice of a personal data breach | Section 8(6) | Rs 200 crore |
 | 3 | Breach of obligations in relation to children | Section 9 | Rs 200 crore |
 | 4 | Breach of additional obligations of Significant Data Fiduciary | Section 10 | Rs 150 crore |
@@ -42,7 +42,7 @@ Practical implications for compliance planning:
 
 Notes:
 
-- Penalties apply **per breach determination** by the Board after inquiry; factors in Section 33(2) include nature/gravity/duration, data type, repetitiveness, gain/loss, mitigation and proportionality.
+- A Schedule penalty requires the Board, on conclusion of an inquiry, to determine a **significant breach** (Section 33(1)); factors in Section 33(2) include nature/gravity/duration, data type, repetitiveness, gain/loss, mitigation and proportionality.
 - The Central Government can amend the Schedule, but cannot more than **double** the originally enacted amounts (Section 42).
 - Repeated penalties (two or more instances) can additionally lead to **blocking of the service in India** under Section 37.
 - All penalty amounts go to the Consolidated Fund of India (Section 34).
@@ -56,8 +56,8 @@ Notes:
 | Breach: intimation to affected Data Principals | Without delay | Rule 7(1) |
 | Grievance redressal response | Published period, at most 90 days | Rule 14(3) |
 | Pre-erasure warning to Data Principal | At least 48 hours before erasure | Rule 8(2) |
-| Erasure of unused data (large e-commerce, gaming, social media platforms) | 3 years from last interaction | Rule 8(1), Third Schedule |
-| Retain logs/data enabling detection of unauthorised access (security continuity) | Minimum 1 year (unless longer required by law) | Rule 6(1)(e) |
+| Erasure of unused data (large e-commerce, gaming, social media platforms) | 3 years from last approach/rights exercise or commencement of the Rules, whichever is latest | Rule 8(1), Third Schedule |
+| Retain logs/data enabling detection of unauthorised access (security continuity) | 1 year, unless compliance with any law requires otherwise | Rule 6(1)(e) |
 | Retain personal data, traffic data and processing logs for Seventh Schedule purposes | Minimum 1 year from processing | Rule 8(3) |
 | Consent Manager record retention | At least 7 years | First Schedule Part B item 4 |
 | SDF: DPIA and audit | Once every 12 months | Rule 13(1) |

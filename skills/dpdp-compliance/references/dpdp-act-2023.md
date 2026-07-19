@@ -14,7 +14,7 @@ Received Presidential assent on 11 August 2023. An Act to provide for the proces
 
 ### Section 2 — Definitions
 
-Key definitions (paraphrased faithfully):
+Key definitions (paraphrased faithfully). Letters (d), (e), (o) to (s), (v) and (w) are intentionally omitted here — if asked about one of those clauses, consult the official India Code text rather than inferring:
 
 - **(a) Appellate Tribunal**: the Telecom Disputes Settlement and Appellate Tribunal (TDSAT) under the TRAI Act, 1997.
 - **(b) automated**: any digital process capable of operating automatically in response to instructions for processing data.
@@ -112,7 +112,7 @@ A Data Fiduciary may process personal data without consent for:
 2. The SDF shall:
    - (a) appoint a **Data Protection Officer** who represents the SDF, is **based in India**, is responsible to the board of directors or similar governing body, and is the contact point for grievance redressal;
    - (b) appoint an **independent data auditor** to evaluate compliance;
-   - (c) undertake **periodic Data Protection Impact Assessment** (description of Data Principal rights and processing purposes, assessment and management of risks, and other prescribed matters), **periodic audit**, and other prescribed measures (see Rule 13).
+   - (c) undertake the following other measures: (i) **periodic Data Protection Impact Assessment** — a process comprising a description of Data Principal rights and processing purposes, assessment and management of risks to those rights, and other prescribed matters; (ii) **periodic audit**; (iii) other prescribed measures (see Rule 13).
 
 ## Chapter III — Rights and Duties of Data Principal
 

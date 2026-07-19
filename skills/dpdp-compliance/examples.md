@@ -67,5 +67,5 @@ Every finding must include: severity, Section/Rule cite, file:line (or proven ab
 **Correct answer shape:**
 
 - Employment-related processing may rest on **Section 7(i)** (legitimate use) rather than Section 6 consent — do not bolt consumer consent walls onto pure HR purposes without checking fit.
-- Still need: employee/applicant notice, security (Section 8(5)/Rule 6), vendor contracts (Section 8(2)), retention/legal holds, grievance (Section 13). Sections 11-12 access/correction/erasure are gated to prior consent / Section 7(a) — escalate pure §7(i) DSARs for human/legal review.
+- Still need: employee/applicant notice as best practice (Section 5 notice is statutorily tied to consent requests), security (Section 8(5)/Rule 6), vendor contracts (Section 8(2)), retention/legal holds, grievance (Section 13). Sections 11-12 access/correction/erasure are gated to prior consent / Section 7(a) — escalate pure §7(i) DSARs for human/legal review.
 - Use audit Section K and implementation-guide §11.

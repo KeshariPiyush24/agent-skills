@@ -127,7 +127,7 @@ Only if notified as SDF (or planning for it):
 | H3 | Rule 15 orders on data availability to foreign States | Contract terms with foreign processors on government access requests (needs-human-review) |
 | H4 | Sectoral localisation still applies (Section 16(2)) | RBI payments data localisation etc. for fintech |
 
-## Section I — Data quality and accountability (Section 8(1), (3), (4))
+## Section I — Data quality and accountability (Section 8(1), (3), (4)) — penalty tier: Rs 50 crore (other provisions)
 
 | # | Check | What to look for |
 | --- | --- | --- |
@@ -136,7 +136,7 @@ Only if notified as SDF (or planning for it):
 | I3 | Fiduciary accountability regardless of processor fault (Section 8(1)) | Vendor due-diligence/monitoring process |
 | I4 | Role classification documented per integration | Marketplace sellers, analytics SDKs, ad partners, AI APIs tagged processor vs independent fiduciary; contracts match the tag |
 
-## Section J — Building a Consent Manager (Section 6(9), Rule 4, First Schedule) — from 13 Nov 2026
+## Section J — Building a Consent Manager (Section 6(9), Rule 4, First Schedule) — from 13 Nov 2026 — penalty tier: Rs 50 crore (other provisions) plus registration suspension/cancellation
 
 Only if the product **is** (or aims to be) a registered Consent Manager. Fiduciaries that merely *consume* CM consent use A10, not this section.
 
@@ -153,19 +153,19 @@ Only if the product **is** (or aims to be) a registered Consent Manager. Fiducia
 | J9 | Control transfers need prior Board approval (Part B item 13) | Corporate/M&A process flag (needs-human-review) |
 | J10 | Security safeguards to prevent personal data breach (Part B item 7; Rule 6 analogue) | Same bar as Section B for any personal data the CM does process (account data, metadata) |
 
-## Section K — Employment and HR processing (Section 7(i))
+## Section K — Employment and HR processing (Section 7(i)) — penalty tier: Rs 50 crore (other provisions); Rs 250/200 crore tiers apply where the gap is security (8(5)) or breach notice (8(6))
 
 For employers / HR products processing employees, contractors, or applicants for purposes of employment or those relating to safeguarding the employer from loss or liability (e.g. prevention of corporate espionage, maintenance of confidentiality of trade secrets, intellectual property):
 
 | # | Check | What to look for |
 | --- | --- | --- |
 | K1 | Section 7(i) scope not stretched to marketing/product analytics on employees | Purpose inventory separates employment ops from consent-based uses |
-| K2 | Employee/applicant notice (even where consent is not the ground) | Onboarding/privacy notice covering categories, purposes, rights that still apply, grievance contact |
+| K2 | Employee/applicant notice — best practice, not a Section 5 duty for pure §7(i) processing (Section 5 notice attaches to consent requests); required where any HR purpose does rest on consent | Onboarding/privacy notice covering categories, purposes, rights that still apply, grievance contact |
 | K3 | Monitoring / productivity / access-badge / email tools minimised | Only what employment/safeguarding purpose needs; vendors under contract (Section 8(2)) |
 | K4 | HR vendor map + deletion/retention | ATS, payroll, benefits, background-check vendors in sharing registry; retention mapped to labour/tax law holds |
 | K5 | Rights gating correct | Do not auto-apply Sections 11-12 DSAR patterns built for consent/§7(a) customers to pure §7(i) employment files without legal review — grievance (Section 13) and security/erasure duties still apply where relevant |
 
-## Section L — Cookies, SDKs and device identifiers (Sections 4-6, Rule 3)
+## Section L — Cookies, SDKs and device identifiers (Sections 4-6, Rule 3) — penalty tier: Rs 50 crore (other provisions)
 
 | # | Check | What to look for |
 | --- | --- | --- |
@@ -174,7 +174,7 @@ For employers / HR products processing employees, contractors, or applicants for
 | L3 | Device IDs / advertising IDs treated as personal data when they identify | Collection disclosed in notice; withdrawal disables collection and suppresses vendors |
 | L4 | Tag manager / multiple pixels inventoried | GTM (or equivalent) contents match sharing registry; no undeclared third parties |
 
-## Section M — Government information calls (Rule 23, Seventh Schedule) — readiness
+## Section M — Government information calls (Rule 23, Seventh Schedule) — readiness — penalty tier: Rs 50 crore (other provisions)
 
 | # | Check | What to look for |
 | --- | --- | --- |

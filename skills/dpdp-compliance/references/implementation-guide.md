@@ -14,7 +14,7 @@ Use `assets/consent-record-schema.md` for the full schema. Core principles:
 
 ### Capture flow
 
-1. Show the Rule 3 notice: itemised data description, purposes, and links to withdraw / exercise rights / complain to the Board. Standalone, plain language, available in English + Eighth Schedule languages the product supports (Section 5(3)).
+1. Show the Rule 3 notice: itemised data description, purposes, and links to withdraw / exercise rights / complain to the Board. Standalone, plain language; give the Data Principal the **option** to access the notice in English **or any** of the 22 languages in the Eighth Schedule to the Constitution (Section 5(3)) — plan localisation accordingly rather than only shipping languages the product already supports.
 2. Unbundle: separate affirmative action per non-essential purpose. No pre-ticked boxes (Section 6(1)).
 3. Do not block core service on consent for unnecessary purposes (consent must be "free" and "unconditional").
 4. Persist the consent event with notice version, timestamp, mechanism, IP/user agent.
@@ -138,7 +138,7 @@ On the website/app, prominently:
 
 ## 9. Section 5(2) migration for existing users
 
-For personal data collected before the relevant provisions commence:
+For personal data for which the Data Principal gave consent before the commencement of the Act's notice/consent provisions (Section 5(2)):
 
 1. Ship a **migration notice** (email + in-app) covering Rule 3 content: itemised data, purposes, withdrawal/rights/Board links.
 2. Record `notice_version=migration-<date>`, channel, and timestamp per principal.
@@ -156,7 +156,7 @@ For personal data collected before the relevant provisions commence:
 ## 11. Employment / HR processing (Section 7(i))
 
 1. Map HR purposes that fit Section 7(i) (employment; safeguarding employer from loss/liability such as espionage, trade secrets, IP) separately from consent-based product/marketing uses on staff.
-2. Provide an employee/applicant privacy notice (categories, purposes, retention, grievance contact) even when consent is not the ground.
+2. Provide an employee/applicant privacy notice (categories, purposes, retention, grievance contact) even when consent is not the ground — best practice supporting Section 8(4) accountability; Section 5 makes notice mandatory only where consent is the basis.
 3. Minimise monitoring tools; bind ATS/payroll/benefits/background-check vendors with Section 8(2) contracts; register them for sharing disclosures.
 4. Retention: align with labour/tax statutes via the legal-hold map; still honour Rule 6 security and Rule 8(3) log floors where applicable.
 5. Rights: implement grievance (Section 13); gate customer-style Section 11/12 automation behind the consent/§7(a) check — escalate pure employment DSARs for human/legal review.
@@ -190,7 +190,7 @@ Maintain a legal-ops runbook: who receives Central Government / authorised-perso
 
 ## Rollout priority (greenfield compliance project)
 
-1. Security safeguards baseline (highest penalty, immediate risk) — Section 6 above.
+1. Security safeguards baseline (highest penalty, immediate risk) — see "6. Security safeguards baseline" in this guide.
 2. Consent data model + capture/withdrawal flows + cookie/SDK gating.
 3. Breach runbook + affected-user scoping.
 4. Erasure pipeline + retention/legal-hold decision table.

@@ -69,7 +69,7 @@ Signature: [AUTHORISED SIGNATORY]
 
 ## Internal runbook checklist
 
-- [ ] T0: incident confirmed as a personal data breach (Section 2(u)) — start the 72h clock
+- [ ] T0: **becoming aware** of a personal data breach (Section 2(u)) — the Rule 7(2)(b) 72h clock starts at awareness, not at internal confirmation
 - [ ] Scope affected Data Principals and data categories (audit-log query)
 - [ ] Stage 1 Board intimation sent (without delay)
 - [ ] User notifications dispatched (without delay) — Template 1

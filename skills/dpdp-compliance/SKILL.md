@@ -3,7 +3,7 @@ name: dpdp-compliance
 description: Audits and implements India's Digital Personal Data Protection (DPDP) Act 2023 and DPDP Rules 2025 compliance. Use when auditing a codebase for DPDP gaps, implementing consent management, Consent Manager platforms, data principal rights APIs, breach notification, retention/erasure, verifiable parental consent, employment/HR (Section 7(i)) controls, or cookie/SDK gating, answering questions about the Act, Rules, penalties, Data Protection Board, or enforcement timelines, or generating privacy notices, consent records, breach drafts, DPIA checklists. Triggers include DPDP, Digital Personal Data Protection, India data privacy, data fiduciary, data principal, consent manager, Significant Data Fiduciary, MeitY. Do not use for GDPR-only, CCPA-only, or other non-Indian privacy regimes, and do not use as a substitute for professional legal advice.
 license: MIT
 metadata:
-  version: 1.1.0
+  version: 1.1.1
   author: kesharipiyush24
   domain: privacy-compliance
   jurisdiction: India
@@ -80,7 +80,7 @@ Fill placeholders with the user's actual product/company details; never leave `[
 - **Data Fiduciary**: the entity that determines purpose and means of processing (analogous to a GDPR controller).
 - **Data Processor**: processes on behalf of a Data Fiduciary under a valid contract.
 - **Significant Data Fiduciary (SDF)**: notified class with extra obligations — DPO in India, annual DPIA and audit, algorithmic due diligence, possible data-localisation restrictions.
-- **Consent Manager**: registered platform letting Data Principals give/manage/withdraw consent (Rule 4, First Schedule).
+- **Consent Manager**: registered platform letting Data Principals give, manage, review and withdraw consent (Rule 4, First Schedule).
 - Applies to digital personal data processed in India, and outside India if connected to offering goods/services to Data Principals in India (Section 3). No extra "sensitive data" category — one tier of personal data.
 
 ## Contents map
