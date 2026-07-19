@@ -92,8 +92,6 @@ If this saves you a weekend of Gazette spelunking:
 2. Share the install one-liner with your team
 3. Open an [issue](https://github.com/KeshariPiyush24/agent-skills/issues) with gaps or wishlist items
 
-Ready-to-post copy for HN / Reddit / LinkedIn / Discord: [docs/launch-kit.md](./docs/launch-kit.md)
-
 See [CONTRIBUTING.md](./CONTRIBUTING.md) and [SECURITY.md](./SECURITY.md).
 
 ## Changelog
