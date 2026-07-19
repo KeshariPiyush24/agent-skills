@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Skill docs
+    url: https://github.com/KeshariPiyush24/agent-skills/tree/main/skills/dpdp-compliance
+    about: Read the DPDP skill README, DEMO, and references before filing
+  - name: skills.sh listing
+    url: https://skills.sh/KeshariPiyush24/agent-skills
+    about: Install page and security scan summary

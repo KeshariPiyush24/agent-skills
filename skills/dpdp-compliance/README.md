@@ -1,6 +1,16 @@
 # dpdp-compliance — DPDP Compliance Agent Skill
 
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+[![Install](https://img.shields.io/badge/npx-skills%20add-black.svg)](https://skills.sh/KeshariPiyush24/agent-skills)
+[![Gazettes](https://img.shields.io/badge/source-G.S.R.%20843–846%20%2B%20892-138808.svg)](./references/timelines-penalties.md)
+
 Make your software ready for **India's data protection law** — with your AI coding agent doing the heavy lifting.
+
+```bash
+npx skills add KeshariPiyush24/agent-skills -s dpdp-compliance
+```
+
+Then: `Audit this repo for DPDP compliance` · [Sample output](../../DEMO.md) · [Star the repo](https://github.com/KeshariPiyush24/agent-skills) if this helps you
 
 This is an [agent skill](https://agentskills.io): a set of instructions and reference material that teaches AI coding agents (Cursor, Claude Code, Codex, Gemini CLI, Windsurf, and 40+ others) how to audit, build, and explain compliance with the **Digital Personal Data Protection Act, 2023 (DPDP Act)** and the **DPDP Rules, 2025**.
 
